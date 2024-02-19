@@ -83,7 +83,7 @@
                             <schemaPaths>
                                 <param>src/main/resources/graphql-client</param>
                             </schemaPaths>
-                            <packageName>ru.sejapoe.dz1.codegen</packageName>
+                            <packageName>ru.sejapoe.dz1.model</packageName>
                             <addGeneratedAnnotation>true</addGeneratedAnnotation>
                         </configuration>
                     </execution>
