@@ -3,6 +3,8 @@ package ru.sejapoe.dz1.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "files")
 @Getter
@@ -10,7 +12,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class File {
+public class File implements Serializable {
     @Id
     @GeneratedValue(generator = "files_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "files_id_seq", sequenceName = "files_id_seq", allocationSize = 1)

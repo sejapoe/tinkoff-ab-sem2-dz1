@@ -1,6 +1,7 @@
 package ru.sejapoe.dz1.dao;
 
-import org.springframework.data.domain.Pageable;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,10 +26,12 @@ public class PostDao {
         this.storageService = storageService;
     }
 
+    @Cacheable(value = "paged_posts", key = "{ #count, #offset }")
     public List<Post> getRecentPosts(int count, int offset) {
         return postRepository.findAll(new ChunkRequest(offset, count, Sort.by("id"))).toList();
     }
 
+    @CacheEvict(value = "paged_posts", allEntries = true)
     public Post createPost(Post post, List<MultipartFile> files) {
         List<File> images = files.stream().map(storageService::store).toList();
         post.setImages(images);

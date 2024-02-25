@@ -16,11 +16,6 @@ services:
     ports:
       - '9001:9000'
     environment:
-      - 'DB_HOST=database'
-      - 'DB_NAME=example_db'
-      - 'DB_USERNAME=test_user'
-      - 'DB_PASSWORD=secret'
-      - 'DB_PORT=5432'
       MINIO_ROOT_USER: test-user
       MINIO_ROOT_PASSWORD: secret-secret
     command: "server /data"
@@ -29,6 +24,17 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis_data:/root/redis
+    environment:
+      - REDIS_PASSWORD=secret-secret
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
 #  server:
 #    image: tink-dz1:latest
 #    ports:
@@ -43,4 +49,6 @@ volumes:
   db_data:
     driver: local
   minio_data:
+    driver: local
+  redis_data:
     driver: local

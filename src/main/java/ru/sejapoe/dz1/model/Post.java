@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post {
+public class Post implements Serializable {
     @Id
     @GeneratedValue(generator = "posts_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "posts_id_seq", sequenceName = "posts_id_seq", allocationSize = 1)
