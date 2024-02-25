@@ -35,6 +35,18 @@ services:
       - REDIS_PASSWORD=secret-secret
       - REDIS_PORT=6379
       - REDIS_DATABASES=16
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: logs
 #  server:
 #    image: tink-dz1:latest
 #    ports:
@@ -51,4 +63,6 @@ volumes:
   minio_data:
     driver: local
   redis_data:
+    driver: local
+  mongo_data:
     driver: local
