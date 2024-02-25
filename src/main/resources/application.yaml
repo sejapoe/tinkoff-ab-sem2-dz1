@@ -13,3 +13,10 @@ spring:
   graphql:
     graphiql:
       enabled: true
+
+storage:
+  endpoint: ${STORAGE_ENDPOINT}
+  bucket-name: ${STORAGE_BUCKET_NAME}
+  region: ${STORAGE_REGION}
+  access-key: ${STORAGE_ACCESS_KEY}
+  secret-key: ${STORAGE_SECRET_KEY}

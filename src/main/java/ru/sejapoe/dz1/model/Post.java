@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,4 +27,15 @@ public class Post {
 
     @Column(name = "text")
     private String text;
+
+    @JoinTable(name = "posts_images",
+            joinColumns = {@JoinColumn(name = "post_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "image_id", referencedColumnName = "id")}
+    )
+    @ManyToMany(
+            targetEntity = File.class,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.EAGER
+    )
+    private List<File> images;
 }
