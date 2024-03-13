@@ -1,6 +1,7 @@
 package ru.sejapoe.dz1.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class OperationController {
     private final OperationService operationService;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Operation> getOperations() {
         return operationService.getAll();
     }
