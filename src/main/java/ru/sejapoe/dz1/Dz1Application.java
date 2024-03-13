@@ -5,11 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import ru.sejapoe.dz1.config.JwtProperties;
 import ru.sejapoe.dz1.config.StorageProperties;
 
 @EnableCaching
 @SpringBootApplication
-@EnableConfigurationProperties({StorageProperties.class})
+@EnableConfigurationProperties({StorageProperties.class, JwtProperties.class})
 @EnableMongoRepositories
 public class Dz1Application {
 
