@@ -4,8 +4,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 import ru.sejapoe.dz1.model.File;
 
-import java.nio.file.Path;
-
 /**
  * The StorageService interface provides methods for initializing, storing, loading, and deleting files from a storage.
  */

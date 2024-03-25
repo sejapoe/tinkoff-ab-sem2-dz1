@@ -3,11 +3,11 @@ package ru.sejapoe.dz1.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.sejapoe.dz1.service.PostService;
 import ru.sejapoe.dz1.dto.post.CreatePostDto;
 import ru.sejapoe.dz1.dto.post.PostDto;
 import ru.sejapoe.dz1.mapper.PostMapper;
 import ru.sejapoe.dz1.model.Post;
+import ru.sejapoe.dz1.service.PostService;
 
 import java.util.List;
 
