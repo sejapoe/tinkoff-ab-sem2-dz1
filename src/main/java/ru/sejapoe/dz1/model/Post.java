@@ -36,4 +36,8 @@ public class Post implements Serializable {
             fetch = FetchType.EAGER
     )
     private List<File> images;
+
+    @JoinColumn(name = "author_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User author;
 }

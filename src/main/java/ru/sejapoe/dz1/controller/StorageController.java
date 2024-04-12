@@ -8,11 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.sejapoe.dz1.storage.StorageService;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/storage/")
 @RequiredArgsConstructor
 public class StorageController {
     private static final List<String> imageExtensions = List.of("png", "jpg", "gif", "jpeg");
