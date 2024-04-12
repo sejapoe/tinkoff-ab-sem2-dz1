@@ -1,8 +1,6 @@
 package ru.sejapoe.dz1.model;
 
-import com.mongodb.client.model.changestream.OperationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;

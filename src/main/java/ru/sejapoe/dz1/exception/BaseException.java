@@ -1,7 +1,6 @@
 package ru.sejapoe.dz1.exception;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 @Getter
