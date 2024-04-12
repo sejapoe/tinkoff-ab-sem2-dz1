@@ -13,3 +13,18 @@ spring:
   graphql:
     graphiql:
       enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+    mongodb:
+      uri: ${MONGO_URI}
+
+
+storage:
+  endpoint: ${STORAGE_ENDPOINT}
+  bucket-name: ${STORAGE_BUCKET_NAME}
+  region: ${STORAGE_REGION}
+  access-key: ${STORAGE_ACCESS_KEY}
+  secret-key: ${STORAGE_SECRET_KEY}

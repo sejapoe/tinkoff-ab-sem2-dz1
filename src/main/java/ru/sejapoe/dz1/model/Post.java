@@ -2,9 +2,9 @@ package ru.sejapoe.dz1.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
 
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -14,7 +14,7 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post {
+public class Post implements Serializable {
     @Id
     @GeneratedValue(generator = "posts_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "posts_id_seq", sequenceName = "posts_id_seq", allocationSize = 1)
@@ -25,4 +25,15 @@ public class Post {
 
     @Column(name = "text")
     private String text;
+
+    @JoinTable(name = "posts_images",
+            joinColumns = {@JoinColumn(name = "post_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "image_id", referencedColumnName = "id")}
+    )
+    @ManyToMany(
+            targetEntity = File.class,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.EAGER
+    )
+    private List<File> images;
 }
